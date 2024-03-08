@@ -1,11 +1,19 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
 from one import AlgorithmOne
 from two import AlgorithmTwo
 
-app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000", "https://example.com"])
+app = Flask(__name__, static_folder="public")
+CORS(app, supports_credentials=True)
+
+
+@app.route("/public/<path:path>")
+def serve_file_in_dir(path):
+    if not path:
+        path = "index.html"
+
+    return send_from_directory("public", path)
 
 
 @app.route("/api/one", methods=["POST"])
