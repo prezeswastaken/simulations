@@ -14,7 +14,7 @@ class AlgorithmOne:
             return self.x0
 
         result = self.a * self.calculate(n - 1) % self.m
-        self.results.add(result)
+        self.results.add(int(result))
         return result
 
     def run(self, n):
