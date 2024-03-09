@@ -25,10 +25,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="text-red-500">Page: index</div>
-  <p v-for="number in numbers">
-    {{ number }}
-  </p>
+  <div>
+    Page: index
+    <p v-for="number in numbers">
+      {{ number }}
+    </p>
+  </div>
 </template>
 
 <style scoped></style>
