@@ -3,23 +3,21 @@ import { useApiFetch } from "./composables/useApiFetch";
 
 const numbers = ref<Array<number> | null>(null);
 
-type oneParams = {
-  a: number | null;
+type twoParams = {
   m: number | null;
   x0: number | null;
   n: number | null;
 };
 
 const params = ref({
-  a: null,
   m: null,
   x0: null,
   n: null,
-} as oneParams);
+} as twoParams);
 
 const fetchNumbers = async () => {
   console.log("Sending request: ", params.value);
-  const { data, error } = await useApiFetch("/api/one", {
+  const { data, error } = await useApiFetch("/api/two", {
     method: "POST",
     body: params.value,
   });
@@ -39,7 +37,6 @@ const fetchNumbers = async () => {
   >
     <div class="flex justify-center w-full">
       <div class="grid grid-cols-2 gap-3 mt-10 w-fit">
-        <InputForm v-model="params.a" name="a" />
         <InputForm v-model="params.m" name="m" />
         <InputForm v-model="params.x0" name="X0" />
         <InputForm v-model="params.n" name="n" />

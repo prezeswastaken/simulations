@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request, send_from_directory, make_response
 from flask_cors import CORS
 
 from one import AlgorithmOne
@@ -38,7 +38,10 @@ def get_two():
     n = int(data.get("n", 0))
 
     calc = AlgorithmTwo(m=m, x0=x0)
-    results = calc.run(100)
+    try:
+        results = calc.run(n)
+    except Exception as e:
+        return make_response(str(e), 400)
 
     return jsonify(list(results))
 
