@@ -3,7 +3,7 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	ssr: false,
 	srcDir: "src",
-	modules: ["@nuxtjs/tailwindcss", "@formkit/auto-animate/nuxt"],
+	modules: ["@formkit/auto-animate/nuxt", "@nuxt/ui"],
 	app: {
 		pageTransition: { name: "page", mode: "out-in" },
 	},

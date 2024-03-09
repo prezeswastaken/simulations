@@ -3,6 +3,8 @@ import { useApiFetch } from "./composables/useApiFetch";
 
 const numbers = ref<Array<number> | null>(null);
 
+const toast = useToast();
+
 type twoParams = {
   m: number | null;
   x0: number | null;
@@ -23,6 +25,10 @@ const fetchNumbers = async () => {
   });
   if (error.value) {
     console.log("Error: ", error.value);
+    toast.add({
+      title: "Error",
+      description: "Values you entered are not valid",
+    });
     return;
   }
   console.log(data.value);

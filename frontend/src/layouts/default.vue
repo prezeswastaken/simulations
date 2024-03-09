@@ -6,6 +6,7 @@
   >
     <NavBar />
     <slot />
+    <UNotifications />
   </div>
 </template>
 
