@@ -12,9 +12,11 @@ defineProps({
 </script>
 
 <template>
-  <NuxtLink class="text-3xl text-center text-white" :to="to">{{
-    name
-  }}</NuxtLink>
+  <NuxtLink
+    class="text-3xl text-center text-white duration-300 hover:text-violet-300"
+    :to="to"
+    >{{ name }}</NuxtLink
+  >
 </template>
 
 <style scoped></style>
