@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, send_from_directory, make_response
 from flask_cors import CORS
+from graph_maker import GraphMaker
 
 from one import AlgorithmOne
 from two import AlgorithmTwo
@@ -25,7 +26,13 @@ def get_one():
     n = int(data.get("n", 0))
 
     calc = AlgorithmOne(a=a, m=m, x0=x0)
-    results = calc.run(n)
+    try:
+        results = calc.run(n)
+    except Exception as e:
+        return make_response(str(e), 400)
+
+    graph = GraphMaker(list(results))
+    graph.make_graph()
 
     return jsonify(list(results))
 
@@ -42,6 +49,8 @@ def get_two():
         results = calc.run(n)
     except Exception as e:
         return make_response(str(e), 400)
+    graph = GraphMaker(results)
+    graph.make_graph()
 
     return jsonify(list(results))
 

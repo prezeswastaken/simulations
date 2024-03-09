@@ -49,6 +49,13 @@ const fetchNumbers = async () => {
         <button @click="fetchNumbers">SUBMIT</button>
       </div>
     </div>
+    <div class="flex justify-center w-full">
+      <img
+        class="self-center mt-10 self-justify-center"
+        v-if="numbers"
+        :src="`http://localhost:8000/public/graph.png?${Date.now()}`"
+      />
+    </div>
     <NumbersList v-if="numbers" :numbers="numbers" />
   </div>
 </template>
