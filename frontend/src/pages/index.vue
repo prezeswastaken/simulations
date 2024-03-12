@@ -24,13 +24,6 @@ onMounted(() => {
 });
 </script>
 
-<template>
-  <div>
-    Page: index
-    <p v-for="number in numbers">
-      {{ number }}
-    </p>
-  </div>
-</template>
+<template></template>
 
 <style scoped></style>
